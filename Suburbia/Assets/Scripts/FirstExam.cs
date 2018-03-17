@@ -65,10 +65,10 @@ public class FirstExam : MonoBehaviour {
 		fireTruckMaterials[1].renderQueue = 3000;
 	}
 
-	void FireTruckMaterial(Material firetruckMaterial, )
+	/*void FireTruckMaterial(Material firetruckMaterial, )
 	{
 
-	}
+	}*/
 
 	IEnumerator UIDropDown()
 	{

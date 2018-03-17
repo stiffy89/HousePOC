@@ -32,3 +32,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Suburbia/Assets/Resources.meta
+Suburbia/ProjectSettings/ProjectSettings.asset
+Suburbia/Assets/Resources.meta
+Suburbia/Assets/Resources.meta
+*.meta
+Suburbia/Assets/Resources.meta
