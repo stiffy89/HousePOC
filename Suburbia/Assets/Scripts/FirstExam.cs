@@ -64,12 +64,7 @@ public class FirstExam : MonoBehaviour {
 		fireTruckMaterials[1].EnableKeyword("_ALPHAPREMULTIPLY_ON");
 		fireTruckMaterials[1].renderQueue = 3000;
 	}
-
-	/*void FireTruckMaterial(Material firetruckMaterial, )
-	{
-
-	}*/
-
+		
 	IEnumerator UIDropDown()
 	{
 		GameObject gameSceneUI = GameObject.FindGameObjectWithTag ("GameSceneUI");
@@ -283,6 +278,22 @@ public class FirstExam : MonoBehaviour {
 		}
 
 		// returning the truck back to its full opacity
+
+		GameObject firetruck = GameObject.FindGameObjectWithTag ("FiretruckMesh");
+		Material[] fireTruckMaterials = firetruck.GetComponent<MeshRenderer> ().materials;
+
+		Color truckColor = fireTruckMaterials [1].color;
+		truckColor.a = 1f;
+		fireTruckMaterials [1].color = truckColor;
+
+		fireTruckMaterials[1].SetFloat("_Mode", 0);
+		fireTruckMaterials[1].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+		fireTruckMaterials[1].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+		fireTruckMaterials[1].SetInt("_ZWrite", 1);
+		fireTruckMaterials[1].DisableKeyword("_ALPHATEST_ON");
+		fireTruckMaterials[1].DisableKeyword("_ALPHABLEND_ON");
+		fireTruckMaterials[1].EnableKeyword("_ALPHAPREMULTIPLY_ON");
+		fireTruckMaterials[1].renderQueue = -1;
 
 	}
 
