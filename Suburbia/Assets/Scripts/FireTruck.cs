@@ -15,16 +15,23 @@ public class FireTruck : MonoBehaviour {
 	void OnEnable()
 	{
 		SequenceController.FadingOut += StopLight;
+		SequenceController.secondExam += StartLight;
 	}
 
 	void OnDisable()
 	{
 		SequenceController.FadingOut -= StopLight;
+		SequenceController.secondExam -= StartLight;
 	}
 
 	void StopLight()
 	{
 		lightOn = false;
+	}
+
+	void StartLight()
+	{
+		lightOn = true;
 	}
 
 	void Update()

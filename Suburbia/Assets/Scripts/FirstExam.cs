@@ -96,6 +96,22 @@ public class FirstExam : MonoBehaviour {
 		}
 	}
 
+	IEnumerator UIRetract()
+	{
+		GameObject gameSceneUI = GameObject.FindGameObjectWithTag ("GameSceneUI");
+
+		RectTransform UIrt = gameSceneUI.GetComponent<RectTransform> ();
+		Vector3 rectPos = UIrt.localPosition;
+		float time = 0f;
+		while (time <= 1f)
+		{
+			rectPos.y = Mathf.Lerp (250f, 350f, time);
+			time += Time.deltaTime * 2f;
+			UIrt.localPosition = rectPos;
+			yield return null;
+		}
+	}
+
 	#endregion
 
 	#region Timer
@@ -343,6 +359,10 @@ public class FirstExam : MonoBehaviour {
 		fireTruckMaterials[1].DisableKeyword("_ALPHABLEND_ON");
 		fireTruckMaterials[1].EnableKeyword("_ALPHAPREMULTIPLY_ON");
 		fireTruckMaterials[1].renderQueue = -1;
+
+		yield return StartCoroutine (UIRetract ());
+
+		GameObject.FindGameObjectWithTag ("GameController").GetComponent<SequenceController> ().SecondQuestion ();
 
 	}
 

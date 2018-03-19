@@ -25,11 +25,13 @@ public class Camera1Controller : MonoBehaviour {
 	void OnEnable()
 	{
 		SequenceController.FadingOut += DisableMainMenu;
+		SequenceController.secondExam += SecondQuestion;
 	}
 
 	void OnDisable()
 	{
-		SequenceController.FadingOut -= DisableMainMenu;	
+		SequenceController.FadingOut -= DisableMainMenu;
+		SequenceController.secondExam += SecondQuestion;
 	}
 
 	void Awake()
@@ -43,6 +45,17 @@ public class Camera1Controller : MonoBehaviour {
 		pp.vignette.settings = vigSettings;
 	}
 
+	void SecondQuestion()
+	{
+		FINISHTHISSCRIPTHERE
+		/*position: 
+		x - 15   y - 8     z - 6
+
+		rotation:
+		x - 7   y - 250   z - 0 */
+
+		Debug.Log ("hello");
+	}
 
 
 	void DisableMainMenu()

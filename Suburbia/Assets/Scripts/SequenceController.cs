@@ -7,6 +7,7 @@ public class SequenceController : MonoBehaviour {
 	public enum CurrentLearningState
 	{
 		MainMenu,
+		FirstExam,
 		SituationAssessment,
 		PriorityState,
 		ExecutingObjectives,
@@ -16,6 +17,9 @@ public class SequenceController : MonoBehaviour {
 	public static event FadeOut FadingOut;
 	public CurrentLearningState currentState;
 
+	public delegate void SecondExam();
+	public static event SecondExam secondExam;
+
 	GameObject RigidBodyFPSController;
 	GameObject CameraController;
 	GameObject OpeningScene;
@@ -23,6 +27,7 @@ public class SequenceController : MonoBehaviour {
 
 	List <GameObject> gameObjects = new List <GameObject>();
 
+	#region UnityCallbacks
 	void Awake()
 	{
 		RigidBodyFPSController = GameObject.FindGameObjectWithTag ("Player");
@@ -49,6 +54,21 @@ public class SequenceController : MonoBehaviour {
 		currentState = CurrentLearningState.MainMenu;
 	}
 
+	void Update()
+	{
+
+		if (Input.GetKeyDown (KeyCode.A))
+		{
+			if (currentState == CurrentLearningState.MainMenu)
+			{
+				FadingOut ();
+				currentState = CurrentLearningState.FirstExam;
+			}
+		}
+	}
+
+	#endregion
+
 	public void SwitchOnGameObject(string objectName)
 	{
 		foreach (GameObject _object in gameObjects)
@@ -60,31 +80,11 @@ public class SequenceController : MonoBehaviour {
 		}
 	}
 
-	void Update()
+	public void SecondQuestion()
 	{
-
-		if (Input.GetKeyDown (KeyCode.A))
+		if (secondExam != null)
 		{
-			switch (currentState)
-			{
-				case CurrentLearningState.MainMenu:
-					currentState = CurrentLearningState.SituationAssessment;
-					if (FadingOut != null)
-					{
-						FadingOut ();
-					}
-					break;
-				case CurrentLearningState.SituationAssessment:
-					if (FirstExam.currentTimerState == FirstExam.CurrentTimerState.FinishedCounting)
-					{
-						currentState = CurrentLearningState.PriorityState;
-						if (FadingOut != null)
-						{
-							FadingOut ();
-						}
-					}
-					break;
-			}
+			secondExam ();
 		}
 	}
-}
+}	

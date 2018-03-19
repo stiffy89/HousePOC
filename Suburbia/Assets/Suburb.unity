@@ -53072,13 +53072,13 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529016207}
-  m_LocalRotation: {x: -0.05586436, y: 0.25902537, z: -0.02736774, w: -0.9638652}
+  m_LocalRotation: {x: -0.058968328, y: 0.2583364, z: -0.015800523, w: -0.96412414}
   m_LocalPosition: {x: 6.5, y: 7.95, z: -9.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 933026920}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7, y: 330, z: 1.3750001}
+  m_LocalEulerAnglesHint: {x: 7, y: 330, z: 0}
 --- !u!114 &1529016209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66023,7 +66023,7 @@ GameObject:
   - component: {fileID: 1950508345}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
